@@ -1,0 +1,13 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle (subtle) -->
+  <circle cx="100" cy="100" r="95" fill="#E3F2FD" />
+
+  <!-- Stylized "C" with video camera feel -->
+  <path d="M60 50 L140 50 L140 150 L60 150 Z" fill="none" stroke="#1976D2" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 50 Q100 20 140 50" fill="none" stroke="#1976D2" stroke-width="12" stroke-linecap="round"/>
+  <path d="M60 150 Q100 180 140 150" fill="none" stroke="#1976D2" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Video camera lens inside "C" -->
+  <circle cx="100" cy="100" r="35" fill="#FFFFFF" stroke="#1976D2" stroke-width="8"/>
+  <circle cx="110" cy="90" r="8" fill="#1976D2"/>
+</svg>
