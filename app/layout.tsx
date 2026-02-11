@@ -8,26 +8,27 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "CollabSpace - Video Conferencing Platform",
-    description: "Internal video conferencing application for seamless collaboration",
-    keywords: ["video conferencing", "collaboration", "meetings", "LiveKit"],
+  title: "CollabSpace - Video Conferencing Platform",
+  description:
+    "Internal video conferencing application for seamless collaboration",
+  keywords: ["video conferencing", "collaboration", "meetings", "LiveKit"],
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={inter.className}>
-                <ThemeRegistry>
-                    <ErrorBoundary>
-                        <Navbar />
-                        <main>{children}</main>
-                    </ErrorBoundary>
-                </ThemeRegistry>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
+        <ThemeRegistry>
+          <ErrorBoundary>
+            <Navbar />
+            <main>{children}</main>
+          </ErrorBoundary>
+        </ThemeRegistry>
+      </body>
+    </html>
+  );
 }
