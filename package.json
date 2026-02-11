@@ -17,6 +17,7 @@
         "@emotion/react": "^11.13.5",
         "@emotion/styled": "^11.13.5",
         "@livekit/components-react": "^2.7.4",
+        "@livekit/components-styles": "^1.2.0",
         "@mui/icons-material": "^6.3.0",
         "@mui/material": "^6.3.0",
         "@prisma/client": "^6.2.0",
