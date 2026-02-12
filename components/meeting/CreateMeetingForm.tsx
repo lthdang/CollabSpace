@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import * as React from 'react';
+import * as React from "react";
 import {
   Dialog,
   DialogTitle,
@@ -12,10 +12,10 @@ import {
   Snackbar,
   Alert,
   Box,
-} from '@mui/material';
-import VideoCallIcon from '@mui/icons-material/VideoCall';
-import { useRouter } from 'next/navigation';
-import { createMeeting } from '@/app/actions/meeting';
+} from "@mui/material";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
+import { useRouter } from "next/navigation";
+import { createMeeting } from "@/app/actions/meeting";
 
 interface CreateMeetingFormProps {
   open: boolean;
@@ -25,9 +25,12 @@ interface CreateMeetingFormProps {
 /**
  * Form dialog for creating a new video meeting
  */
-export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormProps) {
+export default function CreateMeetingForm({
+  open,
+  onClose,
+}: CreateMeetingFormProps) {
   const router = useRouter();
-  const [title, setTitle] = React.useState('');
+  const [title, setTitle] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -43,17 +46,22 @@ export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormPr
 
       if (result.success) {
         // Store the token in sessionStorage for the meeting page to use
-        sessionStorage.setItem(`meeting-token-${result.meetingId}`, result.token);
-        
+        sessionStorage.setItem(
+          `meeting-token-${result.meetingId}`,
+          result.token,
+        );
+
         // Close dialog and redirect
         onClose();
-        setTitle('');
+        setTitle("");
         router.push(result.redirectUrl);
       } else {
         setError(result.error);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred",
+      );
     } finally {
       setLoading(false);
     }
@@ -61,7 +69,7 @@ export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormPr
 
   const handleClose = () => {
     if (!loading) {
-      setTitle('');
+      setTitle("");
       setError(null);
       onClose();
     }
@@ -69,23 +77,23 @@ export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormPr
 
   return (
     <>
-      <Dialog 
-        open={open} 
+      <Dialog
+        open={open}
         onClose={handleClose}
         maxWidth="sm"
         fullWidth
         PaperProps={{
-          component: 'form',
+          component: "form",
           onSubmit: handleSubmit,
         }}
       >
         <DialogTitle>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <VideoCallIcon color="primary" />
             Create New Meeting
           </Box>
         </DialogTitle>
-        
+
         <DialogContent>
           <TextField
             autoFocus
@@ -104,20 +112,18 @@ export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormPr
         </DialogContent>
 
         <DialogActions sx={{ px: 3, pb: 2 }}>
-          <Button 
-            onClick={handleClose} 
-            disabled={loading}
-            color="inherit"
-          >
+          <Button onClick={handleClose} disabled={loading} color="inherit">
             Cancel
           </Button>
           <Button
             type="submit"
             variant="contained"
             disabled={loading}
-            startIcon={loading ? <CircularProgress size={20} /> : <VideoCallIcon />}
+            startIcon={
+              loading ? <CircularProgress size={20} /> : <VideoCallIcon />
+            }
           >
-            {loading ? 'Creating...' : 'Create Meeting'}
+            {loading ? "Creating..." : "Create Meeting"}
           </Button>
         </DialogActions>
       </Dialog>
@@ -127,13 +133,9 @@ export default function CreateMeetingForm({ open, onClose }: CreateMeetingFormPr
         open={!!error}
         autoHideDuration={6000}
         onClose={() => setError(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert 
-          onClose={() => setError(null)} 
-          severity="error"
-          variant="filled"
-        >
+        <Alert onClose={() => setError(null)} severity="error" variant="filled">
           {error}
         </Alert>
       </Snackbar>
