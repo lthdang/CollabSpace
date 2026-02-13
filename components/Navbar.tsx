@@ -33,6 +33,7 @@ export default function Navbar() {
   };
 
   const handleRedirectProfile = () => {
+    handleClose();
     let endPoint = "";
     if (session) {
       endPoint = "/profile";
