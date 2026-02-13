@@ -14,7 +14,7 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-
+import { redirect } from "next/navigation";
 export default function Navbar() {
   const { data: session, status } = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -32,6 +32,13 @@ export default function Navbar() {
     await signOut({ callbackUrl: "/" });
   };
 
+  const handleRedirectProfile = () => {
+    let endPoint = "";
+    if (session) {
+      endPoint = "/profile";
+    }
+    redirect(endPoint);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" elevation={1}>
@@ -115,6 +122,7 @@ export default function Navbar() {
                 <MenuItem disabled>
                   <Typography variant="body2">{session.user.email}</Typography>
                 </MenuItem>
+                <MenuItem onClick={handleRedirectProfile}>Profile</MenuItem>
                 <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
               </Menu>
             </>

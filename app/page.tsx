@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SecurityIcon from "@mui/icons-material/Security";
